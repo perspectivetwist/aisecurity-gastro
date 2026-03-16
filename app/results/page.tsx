@@ -8,6 +8,7 @@ import BranchenRanking from '@/components/BranchenRanking'
 import DimensionsList from '@/components/DimensionsList'
 import FindingsReport from '@/components/FindingsReport'
 import EmailGate from '@/components/EmailGate'
+import CrossSell from '@/components/CrossSell'
 
 function ResultsContent() {
   const router = useRouter()
@@ -71,6 +72,8 @@ function ResultsContent() {
 
         {/* Findings Report — items 01+02 visible, 03+ blurred when locked */}
         <FindingsReport result={result} isUnlocked={isUnlocked} />
+
+        <CrossSell />
 
         {/* Back link */}
         <div className="text-center pt-4">
