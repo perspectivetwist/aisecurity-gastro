@@ -4,6 +4,7 @@ import { calculateQuantumScore } from '@/lib/scorer';
 import { ScrapeError, validateUrl } from '@/lib/scraper';
 import type { ScanRequest } from '@/types/quantum';
 import { logScan } from '@/lib/notion';
+import { pingIndexNow } from '@/lib/indexnow';
 
 export async function POST(req: NextRequest) {
   const startTime = Date.now();
@@ -46,6 +47,9 @@ export async function POST(req: NextRequest) {
 
     // Scan in Notion loggen
     await logScan(normalizedUrl, result.quantumScore);
+
+    // IndexNow: Result-URL an Bing pushen (fire-and-forget)
+    pingIndexNow(normalizedUrl);
 
     return NextResponse.json(result, { status: 200 });
 
