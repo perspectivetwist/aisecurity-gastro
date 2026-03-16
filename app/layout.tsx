@@ -20,11 +20,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://aisecurity-gastro.vercel.app"),
   title: "Restaurant KI-Sicherheit | Quantum Scanner für Gastronomie",
   description:
-    "Kostenloser Sicherheits-Scan für Restaurants: Fake-Bewertungen, KI-Phishing, digitale Schwachstellen.",
+    "Kostenloser KI-Sicherheits-Scan für die Gastronomie: Fake-Bewertungen, KI-Phishing und digitale Schwachstellen für Restaurants erkennen.",
   openGraph: {
     title: "Restaurant KI-Sicherheit | Quantum Scanner für Gastronomie",
     description:
-      "Kostenloser Sicherheits-Scan für Restaurants: Fake-Bewertungen, KI-Phishing, digitale Schwachstellen.",
+      "Kostenloser KI-Sicherheits-Scan für die Gastronomie: Fake-Bewertungen, KI-Phishing und digitale Schwachstellen.",
     url: "https://aisecurity-gastro.vercel.app",
     siteName: "Quantum Gastro Scanner",
     type: "website",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Restaurant KI-Sicherheit | Quantum Scanner für Gastronomie",
-    description: "Kostenloser Sicherheits-Scan für Restaurants: Fake-Bewertungen, KI-Phishing, digitale Schwachstellen.",
+    description: "Kostenloser KI-Sicherheits-Scan für die Gastronomie: Fake-Bewertungen, KI-Phishing, digitale Schwachstellen.",
   },
 };
 
