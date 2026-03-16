@@ -1,25 +1,25 @@
-import { User, Stethoscope, Briefcase, Building2 } from 'lucide-react'
+import { User, UtensilsCrossed, Briefcase, Building2 } from 'lucide-react'
 
 const audiences = [
   {
     icon: User,
-    title: 'Inhaber & Geschäftsführer',
-    text: 'Deine Website verrät mehr über dich als du denkst. Quantum zeigt dir was Angreifer über dein Unternehmen herausfinden können — bevor sie aktiv werden.',
+    title: 'Restaurant-Inhaber',
+    text: 'Fake-Bewertungen können deinen Ruf über Nacht zerstören. Quantum zeigt dir ob dein Restaurant Ziel von koordinierten KI-Angriffen ist.',
   },
   {
-    icon: Stethoscope,
-    title: 'Dienstleister & Praxen',
-    text: 'Patientendaten, Mitarbeiterfotos, Kontaktformulare — Praxen und Dienstleister sind besonders exponiert. Quantum misst wie viel du preisgibst.',
+    icon: UtensilsCrossed,
+    title: 'Gastronomen & Cafés',
+    text: 'Google-Bewertungen, Lieferando-Profil, Social Media — dein digitaler Footprint hat Schwachstellen. Quantum findet sie bevor Angreifer es tun.',
   },
   {
     icon: Briefcase,
-    title: 'Agenturen & Webentwickler',
-    text: 'Biete deinen Kunden einen Sicherheits-Check als Zusatzleistung. Quantum-Reports als konkreter Mehrwert bei Website-Projekten.',
+    title: 'Franchise & Ketten',
+    text: 'Mehrere Standorte = mehrere Angriffsflächen. Quantum prüft ob eure digitale Präsenz konsistent geschützt ist.',
   },
   {
     icon: Building2,
-    title: 'Mittelständische Unternehmen',
-    text: 'Je mehr Mitarbeiter, desto größer die Angriffsfläche. Quantum scannt was öffentlich über euer Team, eure Strukturen und eure Systeme sichtbar ist.',
+    title: 'Hotels & Catering',
+    text: 'Reservierungssysteme, Gästebewertungen, Mitarbeiterprofile — je digitaler dein Betrieb, desto wichtiger der Sicherheits-Check.',
   },
 ]
 
@@ -30,7 +30,7 @@ export default function ForWhom() {
         F&uuml;r wen ist Quantum?
       </h2>
       <p className="text-base font-light text-gray-300 text-center mb-12">
-        F&uuml;r jeden, dessen Website ein Ziel sein k&ouml;nnte.
+        F&uuml;r jeden in der Gastronomie, dessen digitale Pr&auml;senz ein Ziel sein k&ouml;nnte.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

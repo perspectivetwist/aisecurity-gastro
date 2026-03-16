@@ -28,7 +28,7 @@ export default function HowItWorks() {
         So funktioniert&apos;s
       </h2>
       <p className="text-sm font-light text-gray-400 text-center mb-14">
-        Drei Schritte zu deinem Quantum Score.
+        Drei Schritte zum Sicherheits-Check f&uuml;r dein Restaurant.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

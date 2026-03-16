@@ -15,23 +15,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  robots: { index: false, follow: false },
-  metadataBase: new URL("https://quantum-scanner.vercel.app"),
-  title: "Quantum – KI-Sicherheits-Scanner für KMUs",
+  robots: { index: true, follow: true },
+  metadataBase: new URL("https://aisecurity-gastro.vercel.app"),
+  title: "Restaurant KI-Sicherheit | Quantum Scanner für Gastronomie",
   description:
-    "Ist deine Website eine Einladung für KI-Angriffe? Quantum scannt 25+ Sicherheits-Signale und zeigt dein Risiko in 30 Sekunden.",
+    "Kostenloser Sicherheits-Scan für Restaurants: Fake-Bewertungen, KI-Phishing, digitale Schwachstellen.",
   openGraph: {
-    title: "Quantum – Wie exponiert ist deine Website?",
+    title: "Restaurant KI-Sicherheit | Quantum Scanner für Gastronomie",
     description:
-      "Kostenloser KI-Sicherheits-Scan. 5 Dimensionen, 25+ Checks, Ergebnis in 30 Sek.",
-    url: "https://quantum-scanner.vercel.app",
-    siteName: "Quantum",
+      "Kostenloser Sicherheits-Scan für Restaurants: Fake-Bewertungen, KI-Phishing, digitale Schwachstellen.",
+    url: "https://aisecurity-gastro.vercel.app",
+    siteName: "Quantum Gastro Scanner",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Quantum – KI-Sicherheits-Scanner",
-    description: "Kostenloser Quantum Score für deine Website.",
+    title: "Restaurant KI-Sicherheit | Quantum Scanner für Gastronomie",
+    description: "Kostenloser Sicherheits-Scan für Restaurants: Fake-Bewertungen, KI-Phishing, digitale Schwachstellen.",
   },
 };
 

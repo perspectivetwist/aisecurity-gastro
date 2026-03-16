@@ -34,19 +34,18 @@ export default function Home() {
           {/* Social Proof Bubble */}
           <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 mb-12 sm:mb-20">
             <span className="w-2.5 h-2.5 rounded-full bg-[#FF2D55]" />
-            <span className="text-base font-light text-gray-300">&Uuml;ber 20.000 Websites auf KI-Sicherheit gepr&uuml;ft</span>
+            <span className="text-base font-light text-gray-300">&Uuml;ber 5.000 Restaurants auf KI-Sicherheit gepr&uuml;ft</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-8 leading-tight">
-            Ist deine Website eine<br />
-            Einladung f&uuml;r{' '}
+            Ist dein Restaurant vor<br />
             <span className="text-[#FF2D55]" style={{ textShadow: '0 0 30px rgba(255,45,85,0.4)' }}>
-              KI-Angriffe?
+              KI-Angriffen gesch&uuml;tzt?
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl font-light text-gray-300 mb-10 sm:mb-16 leading-relaxed">
-            Jede Website hat Angriffsfl&auml;chen. Wei&szlig;t du wie gro&szlig; deine sind?
+            Fake-Bewertungen, KI-Phishing, digitale Angriffe — pr&uuml;fe die Sicherheit deines digitalen Footprints.
           </p>
 
           <UrlInputForm />
@@ -119,7 +118,7 @@ export default function Home() {
       {/* FOOTER CTA */}
       <div className="border-t border-white/10 py-16 sm:py-32 px-4 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">
-          Wie anf&auml;llig ist deine Website f&uuml;r KI-Angriffe?
+          Ist dein Restaurant vor KI-Angriffen sicher?
         </h2>
         <UrlInputForm />
       </div>
