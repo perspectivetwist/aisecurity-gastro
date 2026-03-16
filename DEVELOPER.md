@@ -1,53 +1,42 @@
-# Quantum Scanner — Developer Documentation
+# Quantum Gastro Security Scanner – Developer Documentation
 
-## Was ist das?
-Next.js 14 App Router Scanner. Analysiert KI-Sicherheitsrisiken von Websites heuristisch.
-Kein aktiver Angriff — nur öffentlich sichtbare Signale.
-
-## Lokale Entwicklung
-npm install && npm run dev → http://localhost:3000
-
-## Routing
-/ (Landing) → /scanning (Loading) → /results (Score + Gate)
-Datenweitergabe:
-- Landing → Scanning: sessionStorage['quantum_scan_url']
-- Scanning → Results: sessionStorage['quantum_scan_result']
-
-## Deployment
-git push main → Vercel baut automatisch
-vercel --prod → manuelles Deployment
+## Setup
+```bash
+npm install
+cp .env.example .env.local  # ENV-Variablen eintragen
+npm run dev                  # http://localhost:3000
+```
 
 ## ENV-Variablen
-| Name                        | Wozu                    | Wo setzen             |
-|-----------------------------|-------------------------|-----------------------|
-| ANTHROPIC_API_KEY           | Claude Haiku Analyse    | .env.local + Vercel   |
-| JINA_API_KEY                | Jina.ai Scraping        | .env.local + Vercel   |
-| NOTION_TOKEN                | Leads DB schreiben      | .env.local + Vercel   |
-| NOTION_QUANTUM_LEADS_DB_ID  | Notion DB ID            | .env.local + Vercel   |
+| Variable | Beschreibung |
+|----------|-------------|
+| ANTHROPIC_API_KEY | Claude Haiku API Key |
+| JINA_API_KEY | Jina.ai Reader API Key |
+| NOTION_TOKEN | Notion Integration Token |
+| NOTION_QUANTUM_LEADS_DB_ID | Notion Quantum Leads DB ID |
 
-## Frontend-Komponenten (Phase 3)
-| Datei                              | Zweck                                        |
-|------------------------------------|----------------------------------------------|
-| components/ShieldScanAnimation.tsx | Schild-SVG mit Fill-Up-Animation + Social Proof |
-| components/UrlInputForm.tsx        | URL-Eingabe + ShieldScan + Neon-Rot Glow Button |
-| components/LandingFaq.tsx          | 9 Quantum-FAQs, Accordion, Frage 1 always open  |
-| components/QuantumScoreCircle.tsx | SVG Score Circle mit Neon-Rot Glow               |
-| components/BandBadge.tsx          | Farbcodiertes Band-Label + Erklärungstext         |
-| components/DimensionBar.tsx       | Einzelne Dimension-Bar (Score + Farbe + Gewicht)  |
-| components/DimensionsList.tsx     | 5 Dimension-Bars Container                        |
-| components/BranchenRanking.tsx    | Deterministic Industry-Ranking Card               |
-| components/ShareButton.tsx        | Quantum Share-Link Button                         |
+## Deployment
+```bash
+npx vercel --prod --yes
+```
+Vercel URL: https://aisecurity-gastro.vercel.app
 
 ## Architektur
-URL → /api/scan → Jina.ai (scraper.ts) → lib/dimensions/* → lib/scorer.ts → ScanResult
-ScanResult → sessionStorage['quantum_scan_result'] → /results → EmailGateModal → /api/leads → Notion
+- `/` — Landing Page mit URL-Input
+- `/scanning` — Loading Screen
+- `/results` — Score + Dimensions + Email-Gate + Findings Report
+- `/api/scan` — POST: URL → Jina scrape → Claude Analyse → Quantum Score
+- `/api/leads` — POST: Email → Notion Leads DB
 
-## Bekannte Limitierungen V0
-- Scan-Dauer: 30–45 Sek. (Vercel Hobby max. 60 Sek.)
-- Jina.ai: max 15.000 Zeichen Output (Token-Budget)
-- Rate Limiting: in-memory (reset bei Vercel Cold Start) — V1: Redis
-- Deepfake-Check: nur Bild-Kontext-Text via Claude, kein echtes Bild-Scraping
-
-## Nach jedem Task aktualisieren
-Neue Dateien, Parameter, Architekturänderungen → diese Datei updaten.
-Lessons Learned → docs/solutions/phase-X/task-X-X-[name].md
+## Wichtige Dateien
+| Datei | Zweck |
+|-------|-------|
+| app/page.tsx | Landing Page |
+| app/scanning/page.tsx | Loading Screen |
+| app/results/page.tsx | Ergebnis-Seite |
+| app/api/scan/route.ts | Scan-Endpoint |
+| components/LandingFaq.tsx | FAQ-Accordion (10 Fragen) |
+| components/Footer.tsx | Ökosystem-Footer |
+| lib/scraper.ts | Jina.ai Wrapper |
+| lib/scorer.ts | Quantum Score Berechnung |
+| lib/reporter.ts | Claude Haiku Findings Report |
