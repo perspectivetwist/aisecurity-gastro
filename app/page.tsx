@@ -38,14 +38,14 @@ export default function Home() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-8 leading-tight">
-            Ist dein Restaurant vor<br />
+            KI-Sicherheits-Scan{' '}
             <span className="text-[#FF2D55]" style={{ textShadow: '0 0 30px rgba(255,45,85,0.4)' }}>
-              KI-Angriffen gesch&uuml;tzt?
+              f&uuml;r dein Restaurant
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl font-light text-gray-300 mb-10 sm:mb-16 leading-relaxed">
-            Fake-Bewertungen, KI-Phishing, digitale Angriffe — pr&uuml;fe die Sicherheit deines digitalen Footprints.
+            Fake-Bewertungen, KI-Phishing, digitale Schwachstellen &mdash; finde die Risiken deines Restaurants bevor Angreifer sie ausnutzen.
           </p>
 
           <UrlInputForm />
