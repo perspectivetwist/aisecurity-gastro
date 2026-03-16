@@ -77,6 +77,7 @@ export default function ScanningPage() {
 
         const result = await res.json()
         sessionStorage.setItem('quantum_scan_result', JSON.stringify(result))
+        sessionStorage.setItem('quantum_scan_url_value', url)
         scanDone.current = true
       } catch {
         router.push('/?error=NETWORK_ERROR')
@@ -94,7 +95,10 @@ export default function ScanningPage() {
         if (scanDone.current && next >= MIN_STEP_BEFORE_NAV) {
           if (!resultReady.current) {
             resultReady.current = true
-            setTimeout(() => router.push('/results'), 800)
+            setTimeout(() => {
+              const scannedUrl = sessionStorage.getItem('quantum_scan_url_value') || sessionStorage.getItem('quantum_scan_url') || ''
+              router.push('/results?url=' + encodeURIComponent(scannedUrl))
+            }, 800)
           }
         }
 
@@ -102,7 +106,10 @@ export default function ScanningPage() {
         if (next >= loadingSteps.length - 1 && scanDone.current) {
           if (!resultReady.current) {
             resultReady.current = true
-            setTimeout(() => router.push('/results'), 800)
+            setTimeout(() => {
+              const scannedUrl = sessionStorage.getItem('quantum_scan_url_value') || sessionStorage.getItem('quantum_scan_url') || ''
+              router.push('/results?url=' + encodeURIComponent(scannedUrl))
+            }, 800)
           }
           return loadingSteps.length - 1
         }
