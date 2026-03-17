@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  verification: { other: { 'msvalidate.01': '4238BAC83D0A84184DB5C8AEF5C3CE14' } },
   robots: { index: true, follow: true },
   metadataBase: new URL("https://aisecurity-gastro.vercel.app"),
   title: "Restaurant KI-Sicherheit | Quantum Scanner für Gastronomie",
