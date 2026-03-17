@@ -6,10 +6,10 @@ import HowItWorks from '@/components/HowItWorks'
 import ForWhom from '@/components/ForWhom'
 
 const features = [
-  { icon: Shield, title: 'Quantum Score 0–100', desc: 'Klare Zahl: wie exponiert deine Website ist' },
+  { icon: Shield, title: 'Quantum Score 0-100', desc: 'Klare Zahl: wie exponiert deine Website ist' },
   { icon: Layers, title: '5 Sicherheits-Dimensionen', desc: 'Datenprofil, Identität, KI-Einfallstore, Manipulation, Agent-Zugang' },
   { icon: Eye, title: 'Deepfake-Risiko-Bewertung', desc: 'KI-Analyse deiner öffentlichen Fotos und Videos' },
-  { icon: FileText, title: 'Findings-Report', desc: 'Konkrete Befunde pro Dimension — kein Fachjargon' },
+  { icon: FileText, title: 'Findings-Report', desc: 'Konkrete Befunde pro Dimension, kein Fachjargon' },
   { icon: Zap, title: 'Keine Installation nötig', desc: 'URL eingeben, 30 Sek. warten, Ergebnis lesen' },
   { icon: Share2, title: 'Score teilen', desc: 'Link zum Vergleichen mit anderen Websites' },
 ]
@@ -45,7 +45,7 @@ export default function Home() {
           </h1>
 
           <p className="text-lg sm:text-xl font-light text-gray-300 mb-10 sm:mb-16 leading-relaxed">
-            Fake-Bewertungen, KI-Phishing, digitale Schwachstellen &mdash; finde die Risiken deines Restaurants bevor Angreifer sie ausnutzen.
+            Fake-Bewertungen, KI-Phishing, digitale Schwachstellen: Finde die Risiken deines Restaurants bevor Angreifer sie ausnutzen.
           </p>
 
           <UrlInputForm />

@@ -5,7 +5,7 @@ const steps = [
     icon: Search,
     label: 'SCHRITT 1',
     title: 'URL eingeben',
-    text: 'Gib deine Website-URL ein. Quantum scannt was öffentlich sichtbar ist — genau wie ein Angreifer.',
+    text: 'Gib deine Website-URL ein. Quantum scannt was öffentlich sichtbar ist, genau wie ein Angreifer.',
   },
   {
     icon: Cpu,
@@ -17,7 +17,7 @@ const steps = [
     icon: FileCheck,
     label: 'SCHRITT 3',
     title: 'Score erhalten',
-    text: 'Du siehst sofort wie groß deine Angriffsfläche ist — und was du konkret ändern kannst.',
+    text: 'Du siehst sofort wie groß deine Angriffsfläche ist und was du konkret ändern kannst.',
   },
 ]
 

@@ -21,7 +21,7 @@ function hasSearchField(text: string): CheckResult {
     name: 'hasSearchField',
     found: matches.length > 0,
     riskWeight: matches.length > 0 ? 0.5 : 0,
-    detail: matches.length > 0 ? 'Suchfeld gefunden — potenzieller Injection-Punkt' : undefined,
+    detail: matches.length > 0 ? 'Suchfeld gefunden, potenzieller Injection-Punkt' : undefined,
   };
 }
 
@@ -44,7 +44,7 @@ function hasCommentSection(text: string): CheckResult {
     name: 'hasCommentSection',
     found: matches.length > 0,
     riskWeight: matches.length > 0 ? 0.7 : 0,
-    detail: matches.length > 0 ? 'Kommentar-Bereich gefunden — offener Input-Kanal' : undefined,
+    detail: matches.length > 0 ? 'Kommentar-Bereich gefunden, offener Input-Kanal' : undefined,
   };
 }
 

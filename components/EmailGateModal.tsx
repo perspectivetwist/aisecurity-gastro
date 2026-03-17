@@ -87,7 +87,7 @@ export default function EmailGateModal({
         <p className="text-gray-400 text-sm mb-5 leading-relaxed">
           Quantum hat <strong className="text-white">{totalFindings}</strong> spezifische Risiken auf{' '}
           <strong className="text-white">{new URL(result.url).hostname}</strong> identifiziert.
-          Der Report zeigt dir genau was gefunden wurde — und was du dagegen tun kannst.
+          Der Report zeigt dir genau was gefunden wurde und was du dagegen tun kannst.
         </p>
 
         <form onSubmit={handleSubmit}>

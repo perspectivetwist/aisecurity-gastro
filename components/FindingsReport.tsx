@@ -13,8 +13,8 @@ const DIMENSION_META: Record<string, { name: string; subtitle: string }> = {
 
 const DIMENSION_EXPLANATIONS: Record<string, string> = {
   datenprofil: 'Namen, Rollen und Kontaktinfos auf deiner Website sind Rohmaterial für hyper-personalisierte KI-Phishing-Angriffe. Je mehr sichtbar ist, desto präziser kann ein Angreifer zielen.',
-  identitaet: 'Fotos und Videos sind Rohmaterial für Voice- und Gesichts-Kloning. Deepfake-as-a-Service ist heute ein Massenprodukt — und KMUs sind bevorzugtes Ziel.',
-  kiEinfallstore: 'Jeder sichtbare KI-Kanal — Chatbot, AI-Widget, Support-Tool — ist ein potenzieller Einstiegspunkt für Prompt Injection Angriffe.',
+  identitaet: 'Fotos und Videos sind Rohmaterial für Voice- und Gesichts-Kloning. Deepfake-as-a-Service ist heute ein Massenprodukt, und KMUs sind bevorzugtes Ziel.',
+  kiEinfallstore: 'Jeder sichtbare KI-Kanal (Chatbot, AI-Widget, Support-Tool) ist ein potenzieller Einstiegspunkt für Prompt Injection Angriffe.',
   manipulationsflaeche: 'Formulare und Input-Felder ohne erkennbaren Schutz können von KI-Agenten für automatisierte Angriffe missbraucht werden.',
   agentZugang: 'Fehlende robots.txt oder llms.txt erlaubt KI-Agenten freien Zugriff auf deine Website. Das erleichtert automatisiertes OSINT gegen dein Unternehmen.',
 }
@@ -150,7 +150,7 @@ export default function FindingsReport({ result, isUnlocked = true }: Props) {
       {/* Report Footer */}
       <div className="border-t border-white/10 pt-4">
         <p className="text-gray-600 text-xs text-center leading-relaxed">
-          Quantum ist ein heuristischer Scanner — er analysiert öffentlich sichtbare Signale.
+          Quantum ist ein heuristischer Scanner. Er analysiert öffentlich sichtbare Signale.
           Kein aktiver Angriff, kein Penetrationstest. Reine Exposition-Analyse.
         </p>
       </div>

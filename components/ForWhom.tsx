@@ -9,7 +9,7 @@ const audiences = [
   {
     icon: UtensilsCrossed,
     title: 'Gastronomen & Cafés',
-    text: 'Google-Bewertungen, Lieferando-Profil, Social Media — dein digitaler Footprint hat Schwachstellen. Quantum findet sie bevor Angreifer es tun.',
+    text: 'Google-Bewertungen, Lieferando-Profil, Social Media: dein digitaler Footprint hat Schwachstellen. Quantum findet sie bevor Angreifer es tun.',
   },
   {
     icon: Briefcase,
@@ -19,7 +19,7 @@ const audiences = [
   {
     icon: Building2,
     title: 'Hotels & Catering',
-    text: 'Reservierungssysteme, Gästebewertungen, Mitarbeiterprofile — je digitaler dein Betrieb, desto wichtiger der Sicherheits-Check.',
+    text: 'Reservierungssysteme, Gästebewertungen, Mitarbeiterprofile: je digitaler dein Betrieb, desto wichtiger der Sicherheits-Check.',
   },
 ]
 

@@ -9,7 +9,7 @@ function hasRestrictiveRobotsTxt(robotsTxt: string): CheckResult {
       name: 'hasRestrictiveRobotsTxt',
       found: false,
       riskWeight: 0.8, // Keine robots.txt = hohes Risiko
-      detail: 'Keine robots.txt gefunden — Website komplett offen für Crawler',
+      detail: 'Keine robots.txt gefunden. Website komplett offen für Crawler',
     };
   }
 
@@ -48,7 +48,7 @@ function hasLlmsTxt(llmsTxt: string): CheckResult {
       name: 'hasLlmsTxt',
       found: false,
       riskWeight: 0.3, // Keine llms.txt = leicht erhöhtes Risiko (noch nicht Standard)
-      detail: 'Keine llms.txt gefunden — kein LLM-spezifischer Zugangsschutz',
+      detail: 'Keine llms.txt gefunden. Kein LLM-spezifischer Zugangsschutz',
     };
   }
 
@@ -56,7 +56,7 @@ function hasLlmsTxt(llmsTxt: string): CheckResult {
     name: 'hasLlmsTxt',
     found: true,
     riskWeight: 0, // llms.txt vorhanden = bewusste Kontrolle
-    detail: 'llms.txt vorhanden — bewusste LLM-Zugangssteuerung',
+    detail: 'llms.txt vorhanden, bewusste LLM-Zugangssteuerung',
   };
 }
 
@@ -89,7 +89,7 @@ function hasVisibleApiEndpoints(text: string): CheckResult {
     name: 'hasVisibleApiEndpoints',
     found: matches.length > 0,
     riskWeight: matches.length > 0 ? 0.9 : 0,
-    detail: matches.length > 0 ? `${matches.length} API-Endpoints sichtbar — potenzielle Angriffsfläche` : undefined,
+    detail: matches.length > 0 ? `${matches.length} API-Endpoints sichtbar, potenzielle Angriffsfläche` : undefined,
   };
 }
 
