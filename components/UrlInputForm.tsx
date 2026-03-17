@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { trackScanStart } from '@/lib/gtag'
 
 function ShieldIcon({ fillLevel }: { fillLevel: number }) {
   return (
@@ -87,6 +88,7 @@ export default function UrlInputForm() {
       return
     }
 
+    trackScanStart(trimmed)
     sessionStorage.setItem('quantum_scan_url', trimmed)
     router.push('/scanning')
   }

@@ -9,6 +9,7 @@ import DimensionsList from '@/components/DimensionsList'
 import FindingsReport from '@/components/FindingsReport'
 import EmailGate from '@/components/EmailGate'
 import CrossSell from '@/components/CrossSell'
+import { trackScanComplete, trackEmailGate } from '@/lib/gtag'
 
 function ResultsContent() {
   const router = useRouter()
@@ -32,11 +33,13 @@ function ResultsContent() {
     try {
       const data: ScanResult = JSON.parse(raw)
       setResult(data)
+      trackScanComplete(data.url, data.quantumScore)
     } catch {
       router.push('/')
       return
     }
 
+    if (!unlocked) trackEmailGate('shown')
     setLoading(false)
   }, [router])
 
