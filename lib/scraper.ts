@@ -59,7 +59,7 @@ export async function scrapeUrl(url: string): Promise<string> {
         const res = await fetch(`https://r.jina.ai/${targetUrl}`, {
           headers: {
             'Accept': 'text/plain',
-            'Authorization': `Bearer ${process.env.JINA_API_KEY}`,
+            'Authorization': `Bearer ${process.env.JINA_API_KEY!.trim()}`,
           },
           signal: AbortSignal.timeout(8000),
         });
