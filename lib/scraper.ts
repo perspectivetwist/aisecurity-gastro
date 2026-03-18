@@ -1,5 +1,10 @@
 // lib/scraper.ts
 
+function cleanEnvKey(key: string | undefined): string | undefined {
+  if (!key) return undefined
+  return key.replace(/^["']+|["']+$/g, '').replace(/\\n/g, '').trim()
+}
+
 export class ScrapeError extends Error {
   constructor(
     message: string,
@@ -46,7 +51,7 @@ export function validateUrl(url: string): void {
 export async function scrapeUrl(url: string): Promise<string> {
   validateUrl(url);
 
-  const hasKey = !!process.env.JINA_API_KEY;
+  const hasKey = !!cleanEnvKey(process.env.JINA_API_KEY);
   const urls = [url];
   if (url.startsWith('https://')) {
     urls.push(url.replace('https://', 'http://'));
@@ -59,7 +64,7 @@ export async function scrapeUrl(url: string): Promise<string> {
         const res = await fetch(`https://r.jina.ai/${targetUrl}`, {
           headers: {
             'Accept': 'text/plain',
-            'Authorization': `Bearer ${process.env.JINA_API_KEY!.trim()}`,
+            'Authorization': `Bearer ${cleanEnvKey(process.env.JINA_API_KEY)!}`,
           },
           signal: AbortSignal.timeout(8000),
         });

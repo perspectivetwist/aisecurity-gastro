@@ -4,8 +4,13 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { DimensionResult, CheckResult } from '@/types/quantum';
 
+function cleanApiKey(key: string | undefined): string | undefined {
+  if (!key) return undefined
+  return key.replace(/^["']+|["']+$/g, '').replace(/\\n/g, '').trim()
+}
+
 const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY?.trim(),
+  apiKey: cleanApiKey(process.env.ANTHROPIC_API_KEY),
 });
 
 function hasPersonPhotos(text: string): CheckResult {
