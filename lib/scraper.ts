@@ -46,53 +46,63 @@ export function validateUrl(url: string): void {
 export async function scrapeUrl(url: string): Promise<string> {
   validateUrl(url);
 
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 20000);
-
-  try {
-    const headers: Record<string, string> = { 'Accept': 'text/plain' };
-    if (process.env.JINA_API_KEY) {
-      headers['Authorization'] = `Bearer ${process.env.JINA_API_KEY}`;
-    }
-
-    let res = await fetch(`https://r.jina.ai/${url}`, {
-      headers,
-      signal: controller.signal,
-    });
-
-    // Auth-Fallback: Wenn 401 (ungültiger Key), ohne Auth-Header versuchen
-    if (!res.ok && res.status === 401 && process.env.JINA_API_KEY) {
-      res = await fetch(`https://r.jina.ai/${url}`, {
-        headers: { 'Accept': 'text/plain' },
-        signal: controller.signal,
-      });
-    }
-
-    // HTTPS→HTTP Fallback: Wenn Jina 422 gibt (SSL-Fehler), mit http:// versuchen
-    if (!res.ok && res.status === 422 && url.startsWith('https://')) {
-      const httpUrl = url.replace('https://', 'http://');
-      res = await fetch(`https://r.jina.ai/${httpUrl}`, {
-        headers: { 'Accept': 'text/plain' },
-        signal: controller.signal,
-      });
-    }
-
-    if (!res.ok) {
-      throw new ScrapeError(`Jina.ai Fehler: ${res.status}`, 'FETCH_ERROR');
-    }
-
-    const text = await res.text();
-    return text.substring(0, 15000);
-
-  } catch (err) {
-    if (err instanceof ScrapeError) throw err;
-    if ((err as Error).name === 'AbortError') {
-      throw new ScrapeError('Timeout nach 20 Sekunden', 'TIMEOUT');
-    }
-    throw new ScrapeError('Scraping fehlgeschlagen', 'FETCH_ERROR');
-  } finally {
-    clearTimeout(timeout);
+  const hasKey = !!process.env.JINA_API_KEY;
+  const urls = [url];
+  if (url.startsWith('https://')) {
+    urls.push(url.replace('https://', 'http://'));
   }
+
+  // Versuch 1: Mit Auth-Key (kurzer Timeout falls Key ungültig)
+  if (hasKey) {
+    for (const targetUrl of urls) {
+      try {
+        const res = await fetch(`https://r.jina.ai/${targetUrl}`, {
+          headers: {
+            'Accept': 'text/plain',
+            'Authorization': `Bearer ${process.env.JINA_API_KEY}`,
+          },
+          signal: AbortSignal.timeout(8000),
+        });
+        if (res.ok) {
+          const text = await res.text();
+          return text.substring(0, 15000);
+        }
+        if (res.status === 401) break;
+        if (res.status === 422) continue;
+        throw new ScrapeError(`Jina.ai Fehler: ${res.status}`, 'FETCH_ERROR');
+      } catch (err) {
+        if (err instanceof ScrapeError) throw err;
+        break; // Timeout/Netzwerk → ohne Key versuchen
+      }
+    }
+  }
+
+  // Versuch 2: Ohne Auth-Key (Free Tier, voller Timeout)
+  for (const targetUrl of urls) {
+    try {
+      const res = await fetch(`https://r.jina.ai/${targetUrl}`, {
+        headers: { 'Accept': 'text/plain' },
+        signal: AbortSignal.timeout(20000),
+      });
+      if (res.ok) {
+        const text = await res.text();
+        return text.substring(0, 15000);
+      }
+      if (res.status === 422) continue;
+      throw new ScrapeError(`Jina.ai Fehler: ${res.status}`, 'FETCH_ERROR');
+    } catch (err) {
+      if (err instanceof ScrapeError) throw err;
+      if (targetUrl === urls[urls.length - 1]) {
+        if ((err as Error).name === 'AbortError' || (err as Error).name === 'TimeoutError') {
+          throw new ScrapeError('Timeout nach 20 Sekunden', 'TIMEOUT');
+        }
+        throw new ScrapeError('Scraping fehlgeschlagen', 'FETCH_ERROR');
+      }
+      continue;
+    }
+  }
+
+  throw new ScrapeError('Scraping fehlgeschlagen', 'FETCH_ERROR');
 }
 
 // robots.txt separat fetchen (für Dimension 5: Agent-Zugang)
