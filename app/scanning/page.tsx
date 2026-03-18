@@ -13,7 +13,7 @@ const loadingSteps = [
   'Berechne Security-Score…',
 ]
 
-const MIN_STEP_BEFORE_NAV = 3
+const MIN_STEP_BEFORE_NAV = 5
 
 function LoadingState({ step }: { step: number }) {
   return (
