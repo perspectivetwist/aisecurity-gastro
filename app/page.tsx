@@ -53,7 +53,7 @@ export default function Home() {
       </div>
 
       {/* DEFINITION */}
-      <section className="max-w-2xl mx-auto px-4 py-6 text-center">
+      <section className="max-w-2xl mx-auto px-4 pt-2 pb-6 text-center">
         <p className="text-sm text-gray-400 leading-relaxed">
           Quantum pr&uuml;ft kostenlos wie verwundbar dein Restaurant gegen&uuml;ber KI-Angriffen ist &mdash; gef&auml;lschte Bewertungen, Phishing, Datenmissbrauch. F&uuml;r KMUs ohne IT-Sicherheit.
         </p>
