@@ -5,7 +5,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { DimensionResult, CheckResult } from '@/types/quantum';
 
 const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
+  apiKey: process.env.ANTHROPIC_API_KEY?.trim(),
 });
 
 function hasPersonPhotos(text: string): CheckResult {
