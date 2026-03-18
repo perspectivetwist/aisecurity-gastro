@@ -30,6 +30,14 @@ export default function JsonLdSchema() {
       },
       {
         "@type": "Question",
+        "name": "Warum gibt es Quantum?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gastronomiebetriebe haben keine Vorstellung davon, wie viel Angriffsmaterial ihre eigene Website öffentlich preisgibt. Fotos vom Team, Namen, Rollen, Chatbots, Reservierungsformulare: alles ist Rohmaterial für KI-gestützte Angriffe. 71% aller Ransomware-Angriffe treffen KMUs (FZI / Transferstelle Cybersicherheit, Lagebild 2025). +89% KI-gestützte Angriffe gegenüber Vorjahr (CrowdStrike Global Threat Report 2026). 29 Minuten: durchschnittliche Zeit bis ein Angreifer ein System übernimmt (CrowdStrike 2026). 83% aller Phishing-Mails sind KI-generiert (KnowBe4 Phishing Trends Report 2025). Deepfake-Vorfälle stiegen Q1 2025 um 19% gegenüber ganzem Jahr 2024 (Keepnet 2026). Kein Tool macht diese Exposition in unter 60 Sekunden sichtbar, auf Restaurant-Niveau verständlich."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Ich bin ein kleines Restaurant. Bin ich wirklich ein Ziel?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -65,7 +73,7 @@ export default function JsonLdSchema() {
         "name": "Was ist der Unterschied zu einem Antivirus oder einer Firewall?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Antivirus und Firewall schützen was bereits bei dir ist: deinen Computer, dein Netzwerk. Quantum zeigt was von außen sichtbar ist, bevor ein Angriff überhaupt beginnt. Es geht nicht darum was du intern hast, sondern was ein Angreifer über dein Restaurant herausfinden kann ohne jemals bei dir einzubrechen."
+          "text": "Antivirus und Firewall schützen was bereits bei dir ist: deinen Computer, dein Netzwerk. Quantum zeigt was von außen sichtbar ist, bevor ein Angriff überhaupt beginnt. Es geht nicht darum was du intern hast, sondern was ein Angreifer über dein Restaurant herausfinden kann ohne jemals bei dir einzubrechen: Team-Fotos für Deepfakes, Reservierungsformulare für automatisierte Angriffe, Chatbots als Einstiegspunkt."
         }
       },
       {
@@ -81,7 +89,15 @@ export default function JsonLdSchema() {
         "name": "Wie entsteht der Quantum Score und warum sollte ich ihm vertrauen?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Der Score ist kein Bauchgefühl. Quantum prüft über 25 konkrete Signale auf deiner Restaurant-Website, aufgeteilt in 5 Kategorien mit fester Gewichtung: Datenprofil (20%), Identität/Deepfake-Risiko (25%), KI-Einfallstore (20%), Manipulationsfläche (20%), Agent-Zugang (15%). Score 100 = minimale Exposition."
+          "text": "Der Score ist kein Bauchgefühl. Quantum prüft über 25 konkrete Signale auf deiner Restaurant-Website, aufgeteilt in 5 Kategorien mit fester Gewichtung: Datenprofil (20%), Identität/Deepfake-Risiko (25%), KI-Einfallstore (20%), Manipulationsfläche (20%), Agent-Zugang (15%). Identität bekommt das höchste Gewicht weil Deepfake-Angriffe auf Restaurantbesitzer das am schnellsten wachsende Risiko 2026 sind. Score 100 = minimale Exposition."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Andere Tools sind schneller. Warum dauert Quantum 30-45 Sekunden?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Weil Quantum tiefer schaut. Die meisten schnellen Scanner prüfen ob deine Website erreichbar ist oder ob ein SSL-Zertifikat vorhanden ist. Das ist kein Sicherheits-Check, das ist ein Ping. Quantum liest deinen gesamten öffentlich sichtbaren Content, analysiert ihn auf 25+ Signale und bewertet das Deepfake-Risiko zusätzlich mit einer KI, genau wie ein echter Angreifer es tun würde, nur automatisiert. 30-45 Sekunden für eine echte Exposition-Analyse ist nicht langsam. Es ist das Minimum um etwas Sinnvolles zu sagen."
         }
       }
     ]
