@@ -1,23 +1,43 @@
 'use client'
 import { useState } from 'react'
 
-export default function ShareButton({ score }: { score: number }) {
+interface Props {
+  score: number
+  resultUrl: string
+}
+
+export default function ShareButton({ score, resultUrl }: Props) {
   const [copied, setCopied] = useState(false)
 
+  const shareText = `Ich hab gerade gecheckt wie sicher mein Betrieb in der KI-Welt ist: ${score}/100. Ist dein Betrieb bei ChatGPT & Co überhaupt sicher aufgestellt? Kostenlos testen: ${resultUrl}`
+
+  function handleWhatsApp() {
+    window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank')
+  }
+
   function handleCopy() {
-    const shareUrl = `${window.location.origin}/results?score=${score}`
-    navigator.clipboard.writeText(shareUrl).then(() => {
+    navigator.clipboard.writeText(resultUrl).then(() => {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     })
   }
 
   return (
-    <button
-      onClick={handleCopy}
-      className="w-full h-11 border border-white/10 text-gray-400 font-light rounded-xl hover:bg-white/5 transition-colors text-sm"
-    >
-      {copied ? 'Link kopiert \u2713' : 'Score teilen \u2192'}
-    </button>
+    <div className="grid grid-cols-2 gap-3 w-full">
+      <button
+        onClick={handleWhatsApp}
+        className="h-11 rounded-xl font-semibold text-sm text-white transition-opacity hover:opacity-90"
+        style={{ backgroundColor: '#25D366' }}
+      >
+        Via WhatsApp teilen
+      </button>
+      <button
+        onClick={handleCopy}
+        className="h-11 rounded-xl font-semibold text-sm text-white transition-opacity hover:opacity-90"
+        style={{ backgroundColor: '#FF2D55' }}
+      >
+        {copied ? 'Kopiert!' : 'Link kopieren'}
+      </button>
+    </div>
   )
 }
