@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
-const LIMIT = 10;          // Max Scans pro IP
+const LIMIT = 999999;      // Rate Limit ausgesetzt
 const WINDOW_MS = 3600000; // 1 Stunde in ms
 
 export function middleware(req: NextRequest) {
