@@ -7,6 +7,7 @@ import QuantumScoreCircle from '@/components/QuantumScoreCircle'
 import BranchenRanking from '@/components/BranchenRanking'
 import DimensionsList from '@/components/DimensionsList'
 import FindingsReport from '@/components/FindingsReport'
+import KIZusammenfassung from '@/components/KIZusammenfassung'
 import EmailGate from '@/components/EmailGate'
 import CrossSell from '@/components/CrossSell'
 import ShareButton from '@/components/ShareButton'
@@ -81,6 +82,8 @@ function ResultsContent() {
 
         {/* 5 Dimensions */}
         <DimensionsList dimensions={result.dimensions} />
+
+        <KIZusammenfassung kiSummary={result.kiSummary ?? null} isUnlocked={isUnlocked} />
 
         {/* Findings Report — items 01+02 visible, 03+ blurred when locked */}
         <FindingsReport result={result} isUnlocked={isUnlocked} />

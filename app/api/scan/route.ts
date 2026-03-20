@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { calculateQuantumScore } from '@/lib/scorer';
 import { ScrapeError, validateUrl } from '@/lib/scraper';
 import type { ScanRequest } from '@/types/quantum';
+import { generateKiSummary } from '@/lib/ki-summary';
 import { logScan } from '@/lib/notion';
 import { pingIndexNow } from '@/lib/indexnow';
 
@@ -44,6 +45,18 @@ export async function POST(req: NextRequest) {
     ]);
 
     result.scanDurationMs = Date.now() - startTime;
+
+    // KI-Zusammenfassung generieren (non-fatal)
+    try {
+      const befunde = Object.entries(result.dimensions)
+        .flatMap(([, dim]) => dim.findings)
+        .join(' | ');
+      if (befunde) {
+        result.kiSummary = await generateKiSummary(normalizedUrl, befunde) ?? undefined;
+      }
+    } catch (err) {
+      console.error('KI-Summary error (non-fatal):', err);
+    }
 
     // Scan in Notion loggen
     await logScan(normalizedUrl, result.quantumScore);

@@ -17,6 +17,10 @@ export interface DimensionResult {
   findings: string[];      // KMU-verständliche Befunde (z.B. "3 Mitarbeiterfotos gefunden")
 }
 
+export interface KiSummary {
+  zusammenfassung: string;
+}
+
 // Gesamt-Scan-Ergebnis
 export interface ScanResult {
   url: string;
@@ -31,6 +35,7 @@ export interface ScanResult {
     manipulationsflaeche: DimensionResult; // 20%
     agentZugang: DimensionResult;       // 15%
   };
+  kiSummary?: KiSummary;
   scannedAt: string;       // ISO 8601
   scanDurationMs?: number; // Performance-Tracking
 }
