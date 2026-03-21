@@ -117,7 +117,7 @@ function ResultsContent() {
       {!isUnlocked && (
         <EmailGate
           primaryColor="#FF2D55"
-          scannerSource="Quantum"
+          scannerSource="gastro-quantum"
           url={displayUrl}
           onUnlock={handleUnlock}
         />
