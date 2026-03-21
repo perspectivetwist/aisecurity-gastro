@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Shield, ServerOff, MapPin } from 'lucide-react'
 
 const FAQS = [
   {
@@ -57,10 +57,19 @@ export default function LandingFaq() {
             <div className="px-4 sm:px-6 pb-4 sm:pb-5 -mt-1">
               <p className="text-gray-400 text-sm leading-relaxed whitespace-pre-line">{faq.a}</p>
               {faq.trust && (
-                <div className="flex flex-wrap gap-3 sm:gap-4 mt-4 text-xs text-gray-500">
-                  <span>🔒 DSGVO-konform</span>
-                  <span>🚫 Keine Datenspeicherung</span>
-                  <span>🇩🇪 Made in Germany</span>
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-4 text-xs text-gray-500">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Shield size={14} className="text-[#FF2D55]" />
+                    DSGVO-konform
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <ServerOff size={14} className="text-[#FF2D55]" />
+                    Keine Datenspeicherung
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <MapPin size={14} className="text-[#FF2D55]" />
+                    Made in Germany
+                  </span>
                 </div>
               )}
             </div>
