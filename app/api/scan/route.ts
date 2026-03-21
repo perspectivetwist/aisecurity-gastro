@@ -47,14 +47,20 @@ export async function POST(req: NextRequest) {
     result.scanDurationMs = Date.now() - startTime;
 
     // KI-Zusammenfassung generieren (non-fatal)
+    let _kiDebug: string | undefined;
     try {
       const befunde = Object.entries(result.dimensions)
         .flatMap(([, dim]) => dim.findings)
         .join(' | ');
+      _kiDebug = `befunde_length=${befunde.length}, has_api_key=${!!process.env.ANTHROPIC_API_KEY}`;
       if (befunde) {
-        result.kiSummary = await generateKiSummary(normalizedUrl, befunde) ?? undefined;
+        const kiResult = await generateKiSummary(normalizedUrl, befunde);
+        _kiDebug += `, kiResult=${JSON.stringify(kiResult)}`;
+        result.kiSummary = kiResult ?? undefined;
       }
     } catch (err) {
+      const e = err as Error;
+      _kiDebug += `, ERROR=${e.message}, stack=${e.stack?.slice(0, 200)}`;
       console.error('KI-Summary error (non-fatal):', err);
     }
 
@@ -64,7 +70,7 @@ export async function POST(req: NextRequest) {
     // IndexNow: Result-URL an Bing pushen (fire-and-forget)
     pingIndexNow(normalizedUrl);
 
-    return NextResponse.json(result, { status: 200 });
+    return NextResponse.json({ ...result, _kiDebug }, { status: 200 });
 
   } catch (err) {
     const error = err as Error;
