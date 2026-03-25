@@ -6,9 +6,28 @@ import type { ScanRequest } from '@/types/quantum';
 import { generateKiSummary } from '@/lib/ki-summary';
 import { logScan } from '@/lib/notion';
 import { pingIndexNow } from '@/lib/indexnow';
+import { checkRateLimit, isCrawlerAuthorized } from '@/lib/rate-limit';
 
 export async function POST(req: NextRequest) {
   const startTime = Date.now();
+
+  // Rate Limiting (Crawler-Secret bypasses)
+  const crawlerSecret = req.headers.get('x-crawler-secret')
+  const skipRateLimit = isCrawlerAuthorized(crawlerSecret)
+
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
+    || req.headers.get('x-real-ip')
+    || 'unknown'
+
+  if (!skipRateLimit) {
+    const { allowed } = await checkRateLimit(ip)
+    if (!allowed) {
+      return NextResponse.json(
+        { error: 'Zu viele Anfragen. Bitte in einer Stunde erneut versuchen.' },
+        { status: 429 }
+      )
+    }
+  }
 
   let body: ScanRequest;
   try {
