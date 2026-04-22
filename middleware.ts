@@ -6,6 +6,15 @@ const LIMIT = 999999;      // Rate Limit ausgesetzt
 const WINDOW_MS = 3600000; // 1 Stunde in ms
 
 export function middleware(req: NextRequest) {
+  const host = req.headers.get('host') || '';
+
+  // Wenn Request über *.vercel.app kommt: noindex Header setzen
+  if (host.endsWith('.vercel.app')) {
+    const response = NextResponse.next();
+    response.headers.set('X-Robots-Tag', 'noindex');
+    return response;
+  }
+
   if (!req.nextUrl.pathname.startsWith('/api/scan')) {
     return NextResponse.next();
   }
@@ -31,5 +40,7 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/api/scan'],
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)',
+  ],
 };
