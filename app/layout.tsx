@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Restaurant KI-Sicherheit | Quantum Scanner für Gastronomie",
     description:
       "Kostenloser KI-Sicherheits-Scan für die Gastronomie: Fake-Bewertungen, KI-Phishing und digitale Schwachstellen.",
-    url: "https://aisecurity-gastro.vercel.app",
+    url: "https://www.ki-gastronomie.com/security-scanner",
     siteName: "Quantum Gastro Scanner",
     type: "website",
   },
