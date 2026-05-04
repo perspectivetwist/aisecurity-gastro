@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   verification: { other: { 'msvalidate.01': '4238BAC83D0A84184DB5C8AEF5C3CE14' } },
   robots: { index: true, follow: true },
-  metadataBase: new URL("https://aisecurity-gastro.vercel.app"),
+  metadataBase: new URL("https://www.ki-gastronomie.com/security-scanner"),
   title: "Restaurant KI-Sicherheit | Quantum Scanner für Gastronomie",
   description:
     "Kostenloser KI-Sicherheits-Scan für die Gastronomie: Fake-Bewertungen, KI-Phishing und digitale Schwachstellen für Restaurants erkennen.",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "Restaurant KI-Sicherheit | Quantum Scanner für Gastronomie",
     description:
       "Kostenloser KI-Sicherheits-Scan für die Gastronomie: Fake-Bewertungen, KI-Phishing und digitale Schwachstellen.",
-    url: "https://aisecurity-gastro.vercel.app",
+    url: "https://www.ki-gastronomie.com/security-scanner",
     siteName: "Quantum Gastro Scanner",
     type: "website",
   },
@@ -57,7 +57,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "AI Shift Drift",
-              "url": "https://ai-gastro-hub.vercel.app",
+              "url": "https://www.ki-gastronomie.com",
               "sameAs": [
                 "https://github.com/perspectivetwist",
                 "https://www.crunchbase.com/organization/ai-shift-drift"

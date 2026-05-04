@@ -9,7 +9,7 @@ interface Props {
 export default function ShareButton({ score, resultUrl }: Props) {
   const [copied, setCopied] = useState(false)
 
-  const baseUrl = 'https://aisecurity-gastro.vercel.app'
+  const baseUrl = 'https://www.ki-gastronomie.com/security-scanner'
   const shareText = `Ich hab gerade gecheckt wie sicher mein Betrieb in der KI-Welt ist: ${score}/100. Ist dein Betrieb bei ChatGPT & Co überhaupt sicher aufgestellt? Kostenlos testen: ${baseUrl}`
 
   function handleWhatsApp() {
