@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 
 const COLOR = '#FF2D55'
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 const loadingSteps = [
   'Analysiere Datenprofil…',
@@ -19,7 +20,7 @@ function LoadingState({ step }: { step: number }) {
   return (
     <div className="flex flex-col items-center gap-6">
       <video
-        src="/loading-anim.mp4"
+        src={`${BASE_PATH}/loading-anim.mp4`}
         autoPlay
         loop
         muted
@@ -63,7 +64,7 @@ export default function ScanningPage() {
     // Run scan in background
     const runScan = async () => {
       try {
-        const res = await fetch('/api/scan', {
+        const res = await fetch(`${BASE_PATH}/api/scan`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url }),
