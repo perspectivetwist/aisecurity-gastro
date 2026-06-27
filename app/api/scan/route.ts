@@ -77,8 +77,18 @@ export async function POST(req: NextRequest) {
       console.error('KI-Summary error (non-fatal):', err);
     }
 
-    // Scan in Notion loggen
-    await logScan(normalizedUrl, result.quantumScore);
+    // Scan in Notion loggen — inkl. Dimensionen + Source
+    const dimLabels: Record<string, string> = {
+      datenprofil: 'Datenschutz',
+      identitaet: 'Identitätsschutz',
+      kiEinfallstore: 'Angriffspunkte',
+      manipulationsflaeche: 'Manipulationsschutz',
+      agentZugang: 'KI-Zugang',
+    };
+    const dimStr = Object.entries(result.dimensions)
+      .map(([key, dim]) => `${dimLabels[key] ?? key}: ${dim.score}`)
+      .join(', ');
+    await logScan(normalizedUrl, result.quantumScore, dimStr);
 
     // IndexNow: Result-URL an Bing pushen (fire-and-forget)
     pingIndexNow(normalizedUrl);
